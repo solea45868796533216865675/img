@@ -201,12 +201,14 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 20px rgba(0,0,0,0.12);
         }
+        /* 图片、视频统一样式 */
         .goods-img {
             width: 95%;
             height: 300px;
             object-fit: cover;
             display: block;
             cursor: pointer;
+            margin: 0 auto;
         }
         .goods-info {
             padding: 20px;
@@ -300,6 +302,7 @@
             color: #666;
             font-size: 15px;
         }
+         /* 预览弹窗（同时支持图片+视频） */
         .img-preview {
             position: fixed;
             top: 0;
@@ -312,11 +315,11 @@
             align-items: center;
             justify-content: center;
         }
-        .img-preview img {
+        .preview-media {
             max-width: 85%;
             max-height: 85vh;
         }
-        .img-preview span {
+        .img-preview .close {
             position: absolute;
             top: 30px;
             right: 50px;
@@ -346,12 +349,12 @@
     </style>
 </head>
 <body>
-    <!-- 图片放大弹窗容器 -->
-    <div class="img-preview" id="imgPreview">
-        <span id="closeBtn">&times;</span>
-        <img src="" alt="放大图片" id="bigImg">
+    <!-- 统一预览弹窗 -->
+    <div class="img-preview" id="previewBox">
+        <span class="close" id="previewClose">&times;</span>
+        <img class="preview-media" id="previewImg" style="display:none;">
+        <video class="preview-media" id="previewVideo" loop playsinline controls muted style="display:none;"></video>
     </div>
-
      <!-- 启动封面跳转页 -->
     <div class="splash-page" id="splashBox">
         <img src="logo.jpg" alt="CX Logo" class="splash-logo">
@@ -377,12 +380,13 @@
         <a href="#" data-page="product2">Product 2</a>
     </nav>
 
-    <!-- Section 1: Fabric -->
+    <!-- Section 1: Fabric 【示例：图片 + 视频混合】 -->
     <div class="page-wrap active" id="fabric">
         <h1>Hot Selling Fabric</h1>
         <div class="goods-wrap">
+            <!-- 商品：图片 -->
             <div class="goods-card">
-                <img src="6438.JPG" alt="Fabric" class="goods-img">
+                <video src="shi1.mp4  " muted loop playsinline class="goods-img"></video>
                 <div class="goods-info">
                     <h3 class="goods-name">6438</h3>
                     <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
@@ -1262,24 +1266,42 @@ navList.forEach(item => {
     })
 })
 
-//图片放大
-let previewBox = document.getElementById('imgPreview');
-let bigImg = document.getElementById('bigImg');
-let imgList = document.querySelectorAll('.goods-img');
-imgList.forEach(img => {
-    img.onclick = function () {
-        bigImg.src = this.src;
-        previewBox.style.display = 'flex';
-    }
-})
-document.getElementById('closeBtn').onclick = function () {
-    previewBox.style.display = 'none';
-}
-previewBox.onclick = function (e) {
-    if (e.target === previewBox) {
-        previewBox.style.display = 'none';
-    }
-}
+// ========= 混合图片+视频点击预览核心逻辑 =========
+        const previewBox = document.getElementById('previewBox');
+        const previewImg = document.getElementById('previewImg');
+        const previewVideo = document.getElementById('previewVideo');
+
+        // 遍历所有图片/视频
+        document.querySelectorAll('.goods-img').forEach(media => {
+            media.onclick = function () {
+                // 先隐藏两个预览元素，停止视频
+                previewImg.style.display = 'none';
+                previewVideo.style.display = 'none';
+                previewVideo.pause();
+
+                if (this.tagName === 'IMG') {
+                    // 点击图片
+                    previewImg.src = this.src;
+                    previewImg.style.display = 'block';
+                } else if (this.tagName === 'VIDEO') {
+                    // 点击视频
+                    previewVideo.src = this.src;
+                    previewVideo.style.display = 'block';
+                    previewVideo.play();
+                }
+                previewBox.style.display = 'flex';
+            }
+        })
+
+        // 关闭预览
+        function closePreview() {
+            previewBox.style.display = 'none';
+            previewVideo.pause();
+        }
+        document.getElementById('previewClose').onclick = closePreview;
+        previewBox.onclick = function (e) {
+            if (e.target === previewBox) closePreview();
+        }
 
 //二维码弹窗
 let mask = document.getElementById('mask');
