@@ -327,41 +327,28 @@
             font-size: 40px;
             cursor: pointer;
         }
-/* 手机端适配 */
-@media(max-width:150px) {
-    .splash-logo {
-        width: 90px;
-    }
-    .company-name {
-        font-size: 28px;
-    }
-    .top-nav {
-        gap: 15px;
-        padding: 10px;
-    }
-    .top-nav a {
-        font-size: 20px;
-    }
-    .enter-btn {
-        font-size: 32px;
-    }
-    .company-title-en {
-        font-size: 24px;
-    }
-    .goods-wrap {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        padding: 0 10px;
-    }
-    .goods-img {
-        height: 200px;
-    }
-    .goods-info {
-        padding: 12px;
-    }
-    .address, .contact-top {
-        font-size: 16px;
-    }
+       
+
+\*{
+  box-sizing: border-box;
+}
+body{
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+}
+img{
+  max-width:100%;
+  height:auto;
+}
+.product-wrap{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 18px;
+  padding: 15px;
+}
+.product-item{
+  padding:8px;
 }
     </style>
 </head>
