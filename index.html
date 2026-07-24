@@ -327,25 +327,42 @@
             font-size: 40px;
             cursor: pointer;
         }
-
-        /* 手机端适配 */
-        @media(max-width:768px) {
-            .splash-logo {
-                width: 90px;
-            }
-            .company-name {
-                font-size: 28px;
-            }
-            .top-nav {
-                gap: 25px;
-            }
-            .enter-btn {
-                font-size: 32px;
-            }
-            .company-title-en {
-                font-size: 24px;
-            }
-        }
+/* 手机端适配 */
+@media(max-width:768px) {
+    .splash-logo {
+        width: 90px;
+    }
+    .company-name {
+        font-size: 28px;
+    }
+    .top-nav {
+        gap: 15px;
+        padding: 10px;
+    }
+    .top-nav a {
+        font-size: 20px;
+    }
+    .enter-btn {
+        font-size: 32px;
+    }
+    .company-title-en {
+        font-size: 24px;
+    }
+    .goods-wrap {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 10px;
+    }
+    .goods-img {
+        height: 200px;
+    }
+    .goods-info {
+        padding: 12px;
+    }
+    .address, .contact-top {
+        font-size: 16px;
+    }
+}
     </style>
 </head>
 <body>
@@ -396,7 +413,7 @@
                 </div>
             </div>
             <div class="goods-card">
-                <video src="shi1.mp4  " muted loop playsinline class="goods-img"></video>
+                <img src="6503.jpg" alt="Fabric" class="goods-img">
                 <div class="goods-info">
                     <h3 class="goods-name">6503</h3>
                     <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
