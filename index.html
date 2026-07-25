@@ -10,13 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            word-break: break-all;
-            overflow-wrap: break-word;
             font-family: "Microsoft Yahei", sans-serif;
-        }
-        .body{
-            overflow-x: hidden;
-            padding: 0px 15px;
         }
         /* 启动封面全屏遮罩（打开页面默认显示） */
         .splash-page {
@@ -102,20 +96,17 @@
             margin-bottom: 15px;
             text-align: center;
             padding: 0px 90px;
-            word-break: break-all;
         }
         .address {
             color: #7707f7;
             font-size: 25px;
             margin-top: 8px;
             text-align: start;
-            word-break: break-all;
         }
         .contact-top {
             color: #a913ee;
             font-size: 25px;
             text-align: start;
-            word-break: break-all;
         }
         
         /* 蓝色导航栏 */
@@ -144,7 +135,7 @@
         .page-wrap {
             display: none;
             padding: 30px;
-            max-width: 100%;
+            max-width: 100px;
             margin: 0 auto;
         }
         .page-wrap.active {
@@ -160,7 +151,7 @@
         padding: 30px 15px;
         }
         .container {
-            max-width: 100%;
+            max-width: 100px;
             margin: 0 auto;
         }
         h1 {
@@ -323,28 +314,25 @@
             cursor: pointer;
         }
 /* 手机端适配 */
-@media(max-width:768px) {
+@media(max-width:150px) {
     .splash-logo {
         width: 90px;
     }
     .company-name {
-        font-size: 22px;
-    }
-    address-text,contact-text{
-        font-size: 16px;
+        font-size: 28px;
     }
     .top-nav {
-        gap: 10px;
+        gap: 15px;
         padding: 10px;
     }
     .top-nav a {
-        font-size: 16px;
+        font-size: 20px;
     }
     .enter-btn {
-        font-size: 26px;
+        font-size: 32px;
     }
     .company-title-en {
-        font-size: 18px;
+        font-size: 24px;
     }
     .goods-wrap {
         grid-template-columns: repeat(2, 1fr);
