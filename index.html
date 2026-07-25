@@ -10,7 +10,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            word-break: break-all;
+            overflow-wrap: break-word;
             font-family: "Microsoft Yahei", sans-serif;
+        }
+        .body{
+            overflow-x: hidden;
+            padding: 0px 15px;
         }
         /* 启动封面全屏遮罩（打开页面默认显示） */
         .splash-page {
@@ -101,12 +107,12 @@
             color: #7707f7;
             font-size: 25px;
             margin-top: 8px;
-            text-align: right;
+            text-align: start;
         }
         .contact-top {
             color: #a913ee;
             font-size: 25px;
-            text-align: right;
+            text-align: start;
         }
         
         /* 蓝色导航栏 */
@@ -135,7 +141,7 @@
         .page-wrap {
             display: none;
             padding: 30px;
-            max-width: 100px;
+            max-width: 100%;
             margin: 0 auto;
         }
         .page-wrap.active {
@@ -151,7 +157,7 @@
         padding: 30px 15px;
         }
         .container {
-            max-width: 100px;
+            max-width: 100%;
             margin: 0 auto;
         }
         h1 {
@@ -168,22 +174,6 @@
         }
         body {
             background-color: #f5f7fa;
-        }
-        /* ========== Page Content Area ========== */
-        .page-wrap {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: px 15px;
-            display: none;
-        }
-        .page-wrap.active {
-            display: block;
-        }
-        .page-wrap h1 {
-            text-align: center;
-            color: #222;
-            margin-bottom: 40px;
-            font-size: 28px;
         }
         /* ========== Product Container ========== */
         .goods-wrap {
@@ -330,25 +320,28 @@
             cursor: pointer;
         }
 /* 手机端适配 */
-@media(max-width:150px) {
+@media(max-width:768px) {
     .splash-logo {
         width: 90px;
     }
     .company-name {
-        font-size: 28px;
+        font-size: 22px;
+    }
+    address-text,contact-text{
+        font-size: 16px;
     }
     .top-nav {
-        gap: 15px;
+        gap: 10px;
         padding: 10px;
     }
     .top-nav a {
-        font-size: 20px;
+        font-size: 16px;
     }
     .enter-btn {
-        font-size: 32px;
+        font-size: 26px;
     }
     .company-title-en {
-        font-size: 24px;
+        font-size: 18px;
     }
     .goods-wrap {
         grid-template-columns: repeat(2, 1fr);
