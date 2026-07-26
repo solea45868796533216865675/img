@@ -348,6 +348,33 @@
             .page-wrap h1 {
                 font-size: 50px !important;
             }
+            background: url("zong2.jpg") no-repeat center center;
+            background-size: cover;
+            background-color:#f0f7ff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-left: 0%;
+            transition: opacity 0.6s ease;
+        }
+        .splash-page.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+         /* 封面Logo 公司名称左上方 */
+        .splash-logo {
+            margin-top: 0%;
+            margin-right: 80%;
+            width: 180px;
+            height: 200% 100%;
+            margin-bottom: 20px;
+            cursor: default;
+        }
 
             /* 顶部标题栏固定宽度 */
             .header-info {
