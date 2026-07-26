@@ -348,6 +348,33 @@
             .page-wrap h1 {
                 font-size: 50px !important;
             }
+      /* --- 封面 --- */
+            .splash-page {
+                /* 固定宽高居中 */
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                width: 1200px !important;
+                height: 900px !important;  /* 适应内容，可调整 */
+                max-height: 100vh;          /* 防止超出屏幕太高 */
+                background-size: cover !important;
+                background-position: center !important;
+                /* 覆盖原有的 flex 保持内容居中 */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .splash-logo {
+                width: 180px !important;
+                margin-right: 80% !important;
+                margin-bottom: 20px !important;
+            }
+
 
             /* 顶部标题栏固定宽度 */
             .header-info {
