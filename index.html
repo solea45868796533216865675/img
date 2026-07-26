@@ -332,7 +332,7 @@
             /* 覆盖 body 最小宽度，固定为 1200px，防止内容折叠 */
             body {
                 min-width: 1200px !important;
-                padding: 1200 !important;
+                padding: 0 !important;
                 background-color: #f5f7fa;
             }
 
@@ -340,7 +340,7 @@
             .page-wrap {
                 min-width: 1200px !important;
                 max-width: 1200px !important;
-                padding: 20px 20px !important;
+                padding: 1000px 1000px !important;
                 margin: 0 auto !important;
                 width: 1200px !important;
             }
@@ -348,40 +348,12 @@
             .page-wrap h1 {
                 font-size: 50px !important;
             }
-      /* --- 封面 --- */
-            .splash-page {
-                width: 1200vw;
-                height: 1000vh;
-                /* 固定宽高居中 */
-                position: fixed;
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                margin: auto;
-                /* 适应内容，可调整 */
-                max-height: 100vh;          /* 防止超出屏幕太高 */
-                background-size: cover !important;
-                background-position: center !important;
-                /* 覆盖原有的 flex 保持内容居中 */
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .splash-logo {
-                width: 180px !important;
-                margin-right: 80% !important;
-                margin-bottom: 20px !important;
-            }
-
 
             /* 顶部标题栏固定宽度 */
             .header-info {
-                min-width: 32px !important;
-                width: 30px !important;
-                padding:20px 20px !important;
+                min-width: 1200px !important;
+                width: 1200px !important;
+                padding:1000px 1000px !important;
             }
 
             .company-name {
@@ -407,16 +379,22 @@
             .top-nav a {
                 font-size: 30px !important;
             }
+
+            /* 封面元素保持原尺寸 */
+            .splash-logo {
+                width: 180px !important;
+                margin-right: 80% !important;
+            }
             .company-title-en {
                 font-size: 65px !important;
                 padding: 0 100px !important;
-                max-width: 1200px !important;
-                width: 100px !important;
+                max-width: 1500px !important;
+                width: 100vw !important;
                 height: 50vh !important;
             }
             .enter-btn {
                 font-size: 65px !important;
-                padding: 100px100px !important;
+                padding: 800px 800px !important;
                 border-width: 5px !important;
                 border-radius: 12px !important;
             }
@@ -482,6 +460,22 @@
             }
         }
 
+        /* 小屏手机额外兜底：强制所有元素不缩放 */
+        @media (max-width: 480px) {
+            body,
+            .header-info,
+            .top-nav,
+            .page-wrap {
+                min-width: 1200px !important;
+                width: 1200px !important;
+            }
+            .page-wrap {
+                padding: 30px 30px !important;
+            }
+            .goods-wrap {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+            }
+        }
         /* 小屏手机额外兜底：强制所有元素不缩放 */
         @media (max-width: 480px) {
             body,
