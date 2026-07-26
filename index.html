@@ -350,6 +350,8 @@
             }
       /* --- 封面 --- */
             .splash-page {
+                width: 1200vw;
+                height: 1000vh;
                 /* 固定宽高居中 */
                 position: fixed;
                 left: 0;
@@ -357,8 +359,7 @@
                 top: 0;
                 bottom: 0;
                 margin: auto;
-                width: 1200px !important;
-                height: 900px !important;  /* 适应内容，可调整 */
+                /* 适应内容，可调整 */
                 max-height: 100vh;          /* 防止超出屏幕太高 */
                 background-size: cover !important;
                 background-position: center !important;
@@ -378,7 +379,7 @@
 
             /* 顶部标题栏固定宽度 */
             .header-info {
-                min-width: 1000px !important;
+                min-width: 32px !important;
                 width: 30px !important;
                 padding:20px 20px !important;
             }
@@ -405,12 +406,6 @@
             }
             .top-nav a {
                 font-size: 30px !important;
-            }
-
-            /* 封面元素保持原尺寸 */
-            .splash-logo {
-                width: 180px !important;
-                margin-right: 80% !important;
             }
             .company-title-en {
                 font-size: 65px !important;
