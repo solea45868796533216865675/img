@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yiwu Canxiang Import and Export Co., Ltd</title>
     <style>
-        *
-         {
+        /* ========== 全局重置 ========== */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Microsoft Yahei", sans-serif;
         }
-        /* 启动封面全屏遮罩（打开页面默认显示） */
+        body {
+            background-color: #f5f7fa;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* ========== 启动封面 ========== */
         .splash-page {
             width: 100vw;
             height: 100vh;
-             /* 封面背景图片铺满全屏 */
             background: url("zong2.jpg") no-repeat center center;
             background-size: cover;
-            background-color:#f0f7ff;
+            background-color: #f0f7ff;
             position: fixed;
             top: 0;
             left: 0;
@@ -28,86 +33,79 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-left: 0%;
             transition: opacity 0.6s ease;
+            padding: 20px;
         }
         .splash-page.hide {
             opacity: 0;
             pointer-events: none;
         }
-         /* 封面Logo 公司名称左上方 */
         .splash-logo {
-            margin-top: 0%;
-            margin-right: 80%;
             width: 180px;
-            height: 200% 100%;
+            height: auto;
             margin-bottom: 20px;
-            cursor: default;
+            margin-right: 60%;
         }
         .company-title-en {
-            font-size: 65px;
+            font-size: 52px;
             color: #e25b0c;
             font-weight: 800;
-            margin-bottom: 90px;
-            text-align: 100% 150%;
-            padding: 50 100px;
-            max-width: 1500px;
-            width: 100vw;
-            height: 50vh;
+            text-align: center;
+            max-width: 1200px;
+            padding: 0 20px;
+            margin-bottom: 40px;
+            line-height: 1.2;
         }
         .enter-btn {
-            font-size: 65px;
+            font-size: 48px;
             color: #0066cc;
             cursor: pointer;
-            padding: 12px 40px;
+            padding: 12px 50px;
             border: 5px solid #0066cc;
             border-radius: 12px;
             transition: all 0.3s;
-            background-color: rgba(255,255,255,0.7);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
         }
         .enter-btn:hover {
             background: #0066cc;
             color: #fff;
         }
 
-          /* ========== 顶部企业标题栏 背景图片 ========== */
+        /* ========== 顶部企业标题栏 ========== */
         .header-info {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
-            padding: 20px 20px;
+            align-items: center;
+            padding: 16px 30px;
             flex-wrap: wrap;
             gap: 10px;
-            /* 标题栏背景图 */
             background: url("feng1.jpg") no-repeat center;
             background-size: 100% 120%;
             background-color: #e8f2ff;
-            min-height: 80px;
+            min-height: 70px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
         }
         .company-name {
-            white-space: nowrap;
             color: #f1a808;
-            font-size: 38px;
+            font-size: 32px;
             font-weight: 800;
-            margin-bottom: 35px;
-            text-align: center;
-            padding: 0px 250px;
+            white-space: nowrap;
         }
         .address {
             color: #7707f7;
-            font-size: 25px;
-            margin-top: 8px;
+            font-size: 18px;
+            margin-top: 4px;
         }
         .contact-top {
             color: #a913ee;
-            font-size: 25px;
+            font-size: 20px;
+            text-align: right;
+            white-space: nowrap;
         }
-        
-        /* 蓝色导航栏 */
+
+        /* ========== 主导航 ========== */
         .top-nav {
             width: 100%;
             background: #007bff;
@@ -122,194 +120,183 @@
             text-decoration: none;
             font-size: 30px;
             transition: 0.2s;
+            cursor: pointer;
         }
         .top-nav a.active {
             text-decoration: underline;
-        } 
+        }
         .top-nav a:hover {
             color: #ffdd66;
         }
-        /* 页面板块通用 */
+
+        /* ========== 页面容器 ========== */
         .page-wrap {
             display: none;
-            padding: 30px;
             max-width: 1400px;
             margin: 0 auto;
+            padding: 30px 20px;
         }
         .page-wrap.active {
             display: block;
         }
-        .page-wrap h1 {
-            text-align: center;
-            margin-bottom: 35px;
-            color: #222;
-         }   
-        body {
-            background-color: #f5f7fa;
-        padding: 30px 15px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: #222;
-            margin-bottom: 80px;
-            font-size: 50px;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft Yahei", sans-serif;
-        }
-        body {
-            background-color: #f5f7fa;
-        }
-        /* ========== Page Content Area ========== */
-        .page-wrap {
-            max-width: 1600px;
-            margin: 0 auto;
-            padding: px 15px;
-            display: none;
-        }
-        .page-wrap.active {
-            display: block;
-        }
-        .page-wrap h1 {
-            text-align: center;
-            color: #222;
+
+        /* ========== 三大板块通用 ========== */
+        .section-block {
             margin-bottom: 40px;
-            font-size: 28px;
         }
-        /* ========== Product Container ========== */
+        .section-block:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ---- 板块1：头部（含二级导航） ---- */
+        .page-header {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            border-radius: 18px;
+            padding: 30px 40px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            border-left: 6px solid #007bff;
+        }
+        .page-header h1 {
+            font-size: 36px;
+            color: #1a2a4a;
+            margin-bottom: 6px;
+        }
+        .page-desc {
+            font-size: 18px;
+            color: #555;
+        }
+        .page-desc span {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        /* 二级导航 */
+        .sub-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 2px solid rgba(0, 123, 255, 0.2);
+        }
+        .sub-nav a {
+            color: #333;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 4px 16px;
+            border-radius: 20px;
+            transition: 0.2s;
+            background: rgba(0, 123, 255, 0.06);
+            cursor: pointer;
+        }
+        .sub-nav a:hover,
+        .sub-nav a.active {
+            background: #007bff;
+            color: #fff;
+        }
+        .sub-nav a.active {
+            box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        /* ---- 板块2：商品展示 ---- */
         .goods-wrap {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
-        /* Single Product Card */
         .goods-card {
             background: #fff;
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 9px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         .goods-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 20px rgba(0,0,0,0.12);
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
         }
-        /* 图片、视频统一样式 */
         .goods-img {
-            width: 95%;
-            height: 300px;
+            width: 100%;
+            height: 260px;
             object-fit: cover;
             display: block;
             cursor: pointer;
-            margin: 0 auto;
+            background: #f0f2f5;
         }
         .goods-info {
-            padding: 20px;
+            padding: 18px 20px 20px;
+            flex: 1;
         }
         .goods-name {
             font-size: 18px;
             font-weight: 600;
             color: #111;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 10px;
         }
         .info-item {
             display: flex;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
+            padding: 6px 0;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 14px;
         }
         .info-item:last-child {
             border-bottom: none;
         }
         .label {
-            width: 130px;
-            color: #666;
+            width: 110px;
+            color: #888;
             font-weight: 500;
+            flex-shrink: 0;
         }
         .value {
-            flex: 8;
-            color: #f060dd;
+            flex: 1;
+            color: #222;
         }
         .price {
             color: #e53935;
-            font-weight: bold;
-            font-size: 17px;
+            font-weight: 700;
+            font-size: 16px;
         }
-        /* ========== Floating Service Button & Popup ========== */
-        .service-btn {
-            position: fixed;
-            right: 30px;
-            bottom: 40px;
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background-color: #07C160;
-            color: #fff;
-            border: none;
-            font-size: 14px;
-            cursor: pointer;
-            box-shadow: 0 3px 12px rgba(7,193,96,0.35);
-            z-index: 998;
+
+        /* ---- 板块3：底部 ---- */
+        .page-footer {
+            background: linear-gradient(135deg, #f8faff 0%, #eef4fb 100%);
+            border-radius: 18px;
+            padding: 28px 36px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #007bff;
         }
-        .service-btn:hover {
-            background-color: #06ad56;
-        }
-        .mask {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            z-index: 999;
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-        }
-        .qrcode-box {
-            background: #fff;
-            padding: 24px;
-            border-radius: 12px;
-            text-align: center;
-            position: relative;
-            width: 600px;
-        }
-        .close-btn {
-            position: absolute;
-            right: 12px;
-            top: 10px;
-            border: none;
-            background: transparent;
-            font-size: 22px;
-            color: #999;
-            cursor: pointer;
-        }
-        .close-btn:hover {
+            gap: 16px;
+            font-size: 15px;
             color: #333;
         }
-        .wx-qrcode {
-            width: 280px;
-            height: 280px;
-            margin: 15px 10px;
+        .footer-inner a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
         }
-        .tip-text {
-            color: #666;
-            font-size: 15px;
+        .footer-inner a:hover {
+            text-decoration: underline;
         }
-         /* 预览弹窗（同时支持图片+视频） */
+
+        /* ========== 预览弹窗 ========== */
         .img-preview {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.85);
+            background-color: rgba(0, 0, 0, 0.88);
             z-index: 10000;
             display: none;
             align-items: center;
@@ -318,1149 +305,1322 @@
         .preview-media {
             max-width: 85%;
             max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
         }
         .img-preview .close {
             position: absolute;
             top: 30px;
             right: 50px;
             color: #fff;
-            font-size: 40px;
+            font-size: 44px;
             cursor: pointer;
+            transition: 0.2s;
+            opacity: 0.7;
         }
-/* 手机端适配 */
- @media (max-width: 768px) {
-            /* 覆盖 body 最小宽度，固定为 1200px，防止内容折叠 */
-            body {
-                min-width: 1200px !important;
-                padding: 0 !important;
-                background-color: #f5f7fa;
-            }
+        .img-preview .close:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+        }
 
-            /* 所有 .page-wrap 固定宽度，不响应屏幕宽度变化 */
-            .page-wrap {
-                min-width: 1200px !important;
-                max-width: 1200px !important;
-                padding: 1000px 1000px !important;
-                margin: 0 auto !important;
-                width: 1200px !important;
-            }
+        /* ========== 客服按钮 & 二维码 ========== */
+        .service-btn {
+            position: fixed;
+            right: 30px;
+            bottom: 40px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #07C160;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(7, 193, 96, 0.4);
+            z-index: 999;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .service-btn:hover {
+            background-color: #06ad56;
+            transform: scale(1.05);
+        }
+        .mask {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        .qrcode-box {
+            background: #fff;
+            padding: 28px 32px 32px;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            width: 440px;
+            max-width: 92vw;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .close-btn {
+            position: absolute;
+            right: 14px;
+            top: 10px;
+            border: none;
+            background: transparent;
+            font-size: 28px;
+            color: #999;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close-btn:hover {
+            color: #333;
+            transform: rotate(90deg);
+        }
+        .wx-qrcode {
+            width: 240px;
+            height: 240px;
+            margin: 12px auto;
+            border-radius: 8px;
+            display: block;
+            border: 2px solid #eee;
+        }
+        .tip-text {
+            color: #666;
+            font-size: 15px;
+            margin-top: 8px;
+        }
 
-            .page-wrap h1 {
-                font-size: 50px !important;
-            ｝
-            /* 顶部标题栏固定宽度 */
+        /* ========== 响应式 ========== */
+        @media (max-width: 1024px) {
             .header-info {
-                min-width: 1200px !important;
-                width: 1200px !important;
-                padding:1000px 1000px !important;
+                flex-direction: column;
+                align-items: flex-start;
             }
-
             .company-name {
-                font-size: 38px !important;
-                padding: 0 250px !important;
-                white-space: nowrap !important;
-            }
-
-            .address {
-                font-size: 25px !important;
+                font-size: 26px;
+                white-space: normal;
             }
             .contact-top {
-                font-size: 25px !important;
+                font-size: 18px;
+                white-space: normal;
+                text-align: left;
             }
-
-            /* 导航栏固定宽度 */
             .top-nav {
-                min-width: 1200px !important;
-                width: 1200px !important;
-                gap: 60px !important;
-                padding: 1000px 1000 !important;
+                gap: 30px;
             }
             .top-nav a {
-                font-size: 30px !important;
+                font-size: 24px;
             }
+            .page-header {
+                padding: 20px 24px;
+            }
+            .page-header h1 {
+                font-size: 28px;
+            }
+            .goods-wrap {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
 
-            /* 封面元素保持原尺寸 */
+        @media (max-width: 600px) {
             .splash-logo {
-                width: 180px !important;
-                margin-right: 80% !important;
+                width: 120px;
+                margin-right: 0;
             }
             .company-title-en {
-                font-size: 65px !important;
-                padding: 0 100px !important;
-                max-width: 1500px !important;
-                width: 100vw !important;
-                height: 50vh !important;
+                font-size: 28px;
             }
             .enter-btn {
-                font-size: 65px !important;
-                padding: 800px 800px !important;
-                border-width: 5px !important;
-                border-radius: 12px !important;
+                font-size: 28px;
+                padding: 10px 32px;
             }
-
-            /* 商品网格保持桌面列数 */
+            .top-nav {
+                gap: 15px;
+            }
+            .top-nav a {
+                font-size: 18px;
+            }
+            .page-wrap {
+                padding: 15px 10px;
+            }
+            .page-header {
+                padding: 16px 18px;
+            }
+            .page-header h1 {
+                font-size: 22px;
+            }
+            .sub-nav {
+                gap: 6px 10px;
+            }
+            .sub-nav a {
+                font-size: 13px;
+                padding: 2px 12px;
+            }
             .goods-wrap {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
-                gap: 25px !important;
-                padding: 35 !important;
+                grid-template-columns: 1fr;
             }
-
             .goods-img {
-                width: 120% !important;
-                height: 300px !important;
+                height: 200px;
             }
-
-            .goods-info {
-                padding: 20px !important;
+            .service-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 12px;
+                right: 16px;
+                bottom: 20px;
             }
-            .goods-name {
-                font-size: 18px !important;
-            }
-            .info-item {
-                padding: 8px 0 !important;
-            }
-            .label {
-                width: 100% !important;
-            }
-            .value {
-                font-size: inherit !important;
-            }
-            .price {
-                font-size: 17px !important;
-            }
-
-            /* 二维码弹窗保持原尺寸 */
             .qrcode-box {
-                width: 600px !important;
+                padding: 20px 16px 24px;
+                width: 92vw;
             }
             .wx-qrcode {
-                width: 280px !important;
-                height: 280px !important;
-            }
-
-            /* 预览弹窗保持原尺寸 */
-            .preview-media {
-                max-width: 85% !important;
-                max-height: 85vh !important;
+                width: 180px;
+                height: 180px;
             }
             .img-preview .close {
-                font-size: 40px !important;
-                top: 30px !important;
-                right: 50px !important;
-            }
-
-            /* 服务按钮保持原尺寸 */
-            .service-btn {
-                width: 90px !important;
-                height: 90px !important;
-                font-size: 14px !important;
-                right: 30px !important;
-                bottom: 40px !important;
-            }
-        }
-
-        /* 小屏手机额外兜底：强制所有元素不缩放 */
-        @media (max-width: 480px) {
-            body,
-            .header-info,
-            .top-nav,
-            .page-wrap {
-                min-width: 1200px !important;
-                width: 1200px !important;
-            }
-            .page-wrap {
-                padding: 30px 30px !important;
-            }
-            .goods-wrap {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
-            }
-        }
-        /* 小屏手机额外兜底：强制所有元素不缩放 */
-        @media (max-width: 480px) {
-            body,
-            .header-info,
-            .top-nav,
-            .page-wrap {
-                min-width: 1200px !important;
-                width: 1200px !important;
-            }
-            .page-wrap {
-                padding: 30px 30px !important;
-            }
-            .goods-wrap {
-                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+                top: 16px;
+                right: 20px;
+                font-size: 32px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 统一预览弹窗 -->
-    <div class="img-preview" id="previewBox">
-        <span class="close" id="previewClose">&times;</span>
-        <img class="preview-media" id="previewImg" style="display:none;">
-        <video class="preview-media" id="previewVideo" loop playsinline controls muted style="display:none;"></video>
-    </div>
-     <!-- 启动封面跳转页 -->
+
+    <!-- ========== 启动封面 ========== -->
     <div class="splash-page" id="splashBox">
         <img src="logo.jpg" alt="CX Logo" class="splash-logo">
-        <div class="company-title-en">YIWU CANXIANG IMPORT & EXPORT CO.,LTD</div>
+        <div class="company-title-en">YIWU CANXIANG IMPORT &amp; EXPORT CO.,LTD</div>
         <div class="enter-btn" id="enterBtn">Let's go</div>
-        </div>
-
-    <!-- 顶部企业信息 -->
-    <div class="header-info">
-        <div class="left-info">
-            <div class="company-name">Yiwu Canxiang Import and Export Co., Ltd</div>
-            <div class="address">ADD: 61409 booth,3 street,2rd floor,No.97 gate,Yiwu international trade market,Zhejiang Province</div>
-        </div>
-        <div class="contact-top">Tel: +86 18341252519 | Email: 17786916@qq.com</div>
     </div>
 
-    <!-- Top Navigation Bar -->
+    <!-- ========== 顶部企业信息 ========== -->
+    <div class="header-info">
+        <div>
+            <div class="company-name">Yiwu Canxiang Import and Export Co., Ltd</div>
+            <div class="address">ADD: 61409 booth, 3 street, 2rd floor, No.97 gate, Yiwu international trade market, Zhejiang Province</div>
+        </div>
+        <div class="contact-top">Tel: +86 18341252519 &nbsp;|&nbsp; Email: 17786916@qq.com</div>
+    </div>
+
+    <!-- ========== 主导航 ========== -->
     <nav class="top-nav">
-        <a href="#" data-page="fabric">Fabric</a>
+        <a href="#" data-page="fabric" class="active">Fabric</a>
         <a href="#" data-page="bedding">Bedding Sets</a>
         <a href="#" data-page="curtain">Curtain</a>
         <a href="#" data-page="product1">Product 1</a>
         <a href="#" data-page="product2">Product 2</a>
     </nav>
 
-    <!-- Section 1: Fabric 【示例：图片 + 视频混合】 -->
+    <!-- ============================================================ -->
+    <!-- 页面：Fabric -->
+    <!-- ============================================================ -->
     <div class="page-wrap active" id="fabric">
-        <h1>Hot Selling Fabric</h1>
-        <div class="goods-wrap">
-            <!-- 商品：图片 -->
-            <div class="goods-card">
-                <video src="shi1.mp4  " muted loop playsinline class="goods-img"></video>
-                <div class="goods-info">
-                    <h3 class="goods-name">6438</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+        <!-- 板块1：头部 + 二级导航 -->
+        <div class="section-block page-header">
+            <h1>Hot Selling Fabric</h1>
+            <p class="page-desc">Premium quality · <span>235cm width</span> · Various patterns</p>
+            <nav class="sub-nav" data-page="fabric">
+                <a href="#" class="active" data-filter="all"> All</a>
+                <a href="#" data-filter="beding fabric">beding fabric</a>
+                <a href="#" data-filter="batik Fabric">batik Fabric</a>
+                <a href="#" data-filter="curtain Fabric">curtain Fabric</a>
+            </nav>
+        </div>
+
+        <!-- 板块2：商品展示 -->
+        <div class="section-block">
+            <div class="goods-wrap">
+                <!-- 视频商品 -->
+                <div class="goods-card" data-type="beding fabric">
+                    <video src="shi1.mp4" muted loop playsinline class="goods-img"></video>
+                    <div class="goods-info">
+                        <h3 class="goods-name">6438</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
                 </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <video src="shi2.mp4" muted loop playsinline class="goods-img"></video>
+                    <div class="goods-info">
+                        <h3 class="goods-name">6503</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <video src="shi3.mp4" muted loop playsinline class="goods-img"></video>
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-581</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <video src="shi4.mp4" muted loop playsinline class="goods-img"></video>
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-973</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <video src="shi5.mp4" muted loop playsinline class="goods-img"></video>
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-1502</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <video src="shi6.mp4" muted loop playsinline class="goods-img"></video>
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-1504兰</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <!-- 图片商品（部分示例） -->
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-3794kafei.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3749咖啡</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                        <div class="info-item"><span class="label">attention:</span><span class="value">  stork</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-581.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-581</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-973.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-1502.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-1504lan.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-4235.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-4565.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-4577.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-4592.JPG" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-4777ka.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-4783.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-4805tiaose.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-4930ka.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-5062.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-5304lan.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-5334.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-5344.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-5739.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-5895lanbai.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-6317zong.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-6384.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="ZY-6440.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="6503.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="beding fabric">
+                    <img src="6438.jpg" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran1.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran2.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran3.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran4.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran5.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran6.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran7.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran8.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran10.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran11.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran12.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran13.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran14.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran15.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran16.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran17.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran18.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran19.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran20.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran21.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran22.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran23.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran24.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran25.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran26.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran27.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran28.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran29.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran30.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran31.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran32.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran33.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran34.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran35.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="batik Fabric">
+                    <img src="laran36.png" alt="Fabric" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">ZY-3797</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
+                        <div class="info-item"><span class="label">Unit Price:</span><span class="value price">Contact for further details</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
+                        <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
+                    </div>
+                </div> 
             </div>
-            <div class="goods-card">
-                <video src="shi2.mp4" muted loop playsinline class="goods-img"></video>
-                <div class="goods-info">
-                    <h3 class="goods-name">6503</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <video src="shi3.mp4" muted loop playsinline class="goods-img"></video>
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-581</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <video src="shi4.mp4" muted loop playsinline class="goods-img"></video>
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-973</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <video src="shi5.mp4" muted loop playsinline class="goods-img"></video>
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-1502</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <video src="shi6.mp4" muted loop playsinline class="goods-img"></video>
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-1504兰</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3749kafei.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3749咖啡</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-4235.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-4235</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-4565.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-4565</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-4577.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-4577</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-4592.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-4592</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-4777ka.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-4777咖</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-4783.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-4783</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-4805tiaose.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-4805调色</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-4930ka.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-4930咖</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-5062.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-5062</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-5304lan.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-5304蓝</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-5334.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-5334</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-5344.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-5344</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">                                                                                                                                                                                                                                                 
-                <img src="ZY-5739.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-5739</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-5895lanbai.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-5895蓝白</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-6004.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-6004</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-6317zong.jpg" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-6317棕</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-6384.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-6384</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-6384.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card"> 
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="ZY-3797.JPG" alt="Fabric" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">ZY-3797</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">235cm width</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">5000 m</span></div>
-                    <div class="info-item"><span class="label">roll:</span><span class="value">100 m</span></div>
-                </div>
+        </div>
+
+        <!-- 板块3：底部 -->
+        <div class="section-block page-footer">
+            <div class="footer-inner">
+                <span>📦 Fabric Dept. · 500+ patterns · Sample service</span>
+                <span><a href="#">Custom Order</a> · <a href="#">Sample Request</a></span>
+                <span><a href="mailto:17786916@qq.com">Email Us</a> · +86 18341252519</span>
             </div>
         </div>
     </div>
 
-    <!-- Section 2: Bedding Sets -->
+    <!-- ============================================================ -->
+    <!-- 页面：Bedding Sets -->
+    <!-- ============================================================ -->
     <div class="page-wrap" id="bedding">
-        <h1>Bedding Set Collection</h1>
-        <div class="goods-wrap">
-            <div class="goods-card">
-                <img src="White Heart 6pcs.jpg" alt="Bedding Set" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">6 Pcs Bedding Set</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">Quilt cover:200*230cm*1
-                       <br> Bed sheet:250*250cm*1
-                       <br> Pillow case:50*70+5cm*4</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">45 KG/set</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.2 CBM</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price">/set</span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">60 sets</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">12 sets per carton</span></div>
+        <div class="section-block page-header">
+            <h1>Bedding Set Collection</h1>
+            <p class="page-desc">Luxury 4‑piece &amp; 6‑piece · <span>Premium cotton</span> · Elegant designs</p>
+            <nav class="sub-nav" data-page="bedding">
+                <a href="#" class="active" data-filter="all">📌 全部</a>
+                <a href="#" data-filter="4pcs">4件套</a>
+                <a href="#" data-filter="6pcs">6件套</a>
+            </nav>
+        </div>
+
+        <div class="section-block">
+            <div class="goods-wrap">
+                <div class="goods-card" data-type="6pcs">
+                    <img src="White Heart 6pcs.jpg" alt="Bedding Set" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">6 Pcs Bedding Set</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">Quilt 200*230cm</span></div>
+                        <div class="info-item"><span class="label">Weight:</span><span class="value">45 KG/set</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">60 sets</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="6pcs">
+                    <img src="Red Hear6PCS.jpg" alt="Bedding Set" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">6 Pcs Bedding Set</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">Quilt 200*230cm</span></div>
+                        <div class="info-item"><span class="label">Weight:</span><span class="value">45 KG/set</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">60 sets</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="4pcs">
+                    <img src="D-115.jpg" alt="Bedding Set" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">4 Pcs Bedding Set</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">Quilt 200*230cm</span></div>
+                        <div class="info-item"><span class="label">Weight:</span><span class="value">45 KG/set</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">150 sets</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="6pcs">
+                    <img src="V-60.jpg" alt="Bedding Set" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">6 Pcs Bedding Set</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">Quilt 220*240cm</span></div>
+                        <div class="info-item"><span class="label">Weight:</span><span class="value">56 KG/set</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">72 sets</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="4pcs">
+                    <img src="4pcs1201.jpg" alt="Bedding Set" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">4 Pcs Bedding Set</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">Quilt 200*230cm</span></div>
+                        <div class="info-item"><span class="label">Weight:</span><span class="value">30 KG/set</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">60 sets</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="4pcs">
+                    <img src="4pcs1202.jpg" alt="Bedding Set" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">4 Pcs Bedding Set</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">Quilt 200*230cm</span></div>
+                        <div class="info-item"><span class="label">Weight:</span><span class="value">30 KG/set</span></div>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">60 sets</span></div>
+                    </div>
                 </div>
             </div>
-            <div class="goods-card">
-                <img src="Red Hear6PCS.jpg" alt="Bedding Set" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">6 Pcs Bedding Set</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">Quilt cover:200*230cm*1
-                       <br> Bed sheet:250*250cm*1
-                       <br> Pillow case:50*70+5cm*4</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">45 KG/set</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.2 CBM</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price">/set</span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">60 sets</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">12 sets per carton</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="D-115.jpg" alt="Bedding Set" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">4 Pcs Bedding Set</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">Quilt cover:200*230cm*1
-                       <br> Bed sheet:250*250cm*1
-                       <br> Pillow case:50*70cm*2</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">45 KG/set</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.2 CBM</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price">/set</span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">150 sets</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">30 sets per carton</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="V-60.jpg" alt="Bedding Set" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">6 Pcs Bedding Set</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">Quilt cover:220*240cm*1
-                       <br> Bed sheet:250*270cm*1
-                       <br> Pillow case:50*80+5cm*4</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">56 KG/set</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.28 CBM</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price">/set</span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">72 sets</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">24 sets per carton</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="4pcs1201.jpg" alt="Bedding Set" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">4 Pcs Bedding Set</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">Quilt cover:200*230cm*1
-                       <br> Bed sheet:250*250cm*1
-                       <br> Pillow case:50*70+5cm*2</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">30 KG/set</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.2 CBM</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price">/set</span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">60 sets</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">12 sets per carton</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="4pcs1202.jpg" alt="Bedding Set" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">4 Pcs Bedding Set</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">Quilt cover:200*230cm*1
-                       <br> Bed sheet:250*250cm*1
-                       <br> Pillow case:50*70+5cm*2</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">30 KG/set</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.2 CBM</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price">/set</span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">60 sets</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">12 sets per carton</span></div>
-                </div>
+        </div>
+
+        <div class="section-block page-footer">
+            <div class="footer-inner">
+                <span>🛏️ Bedding Dept. · OEM/ODM welcome</span>
+                <span><a href="#">Custom Size</a> · <a href="#">Bulk Order</a></span>
+                <span><a href="mailto:17786916@qq.com">Email Us</a> · +86 18341252519</span>
             </div>
         </div>
     </div>
 
-    <!-- Section 3: Curtain -->
+    <!-- ============================================================ -->
+    <!-- 页面：Curtain -->
+    <!-- ============================================================ -->
     <div class="page-wrap" id="curtain">
-        <h1>Curtain Products</h1>
-        <div class="goods-wrap">
-            <div class="goods-card">
-                <img src="701.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">701</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.6 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.22 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 400 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
+        <div class="section-block page-header">
+            <h1>Curtain Products</h1>
+            <p class="page-desc">High‑quality blackout curtains · <span>135‑140cm width</span> · 80‑100% blackout</p>
+            <nav class="sub-nav" data-page="curtain">
+                <a href="#" class="active" data-filter="all">📌 全部</a>
+                <a href="#" data-filter="80">80%遮光</a>
+                <a href="#" data-filter="90">90%+遮光</a>
+            </nav>
+        </div>
+
+        <div class="section-block">
+            <div class="goods-wrap">
+                <div class="goods-card" data-type="80">
+                    <img src="701.jpg" alt="Curtain" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">701</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
+                        <div class="info-item"><span class="label">Blackout:</span><span class="value">80%</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="80">
+                    <img src="702.jpg" alt="Curtain" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">702</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
+                        <div class="info-item"><span class="label">Blackout:</span><span class="value">80%</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="80">
+                    <img src="703.jpg" alt="Curtain" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">703</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
+                        <div class="info-item"><span class="label">Blackout:</span><span class="value">80%</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="90">
+                    <img src="928.jpg" alt="Curtain" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">928</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">140*260cm</span></div>
+                        <div class="info-item"><span class="label">Blackout:</span><span class="value">90%</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="90">
+                    <img src="929.jpg" alt="Curtain" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">929</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
+                        <div class="info-item"><span class="label">Blackout:</span><span class="value">100%</span></div>
+                    </div>
+                </div>
+                <div class="goods-card" data-type="90">
+                    <img src="868.jpg" alt="Curtain" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">868</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
+                        <div class="info-item"><span class="label">Blackout:</span><span class="value">100%</span></div>
+                    </div>
                 </div>
             </div>
-            <div class="goods-card">
-                <img src="702.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">702</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.6 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.22 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 400 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="703.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">703</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.6 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.22 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 400 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="704.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">704</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.6 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.22 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 400 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="705.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">705</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.6 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.22 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 400 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="706.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">706</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.6 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.22 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 400 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="2188.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">2188</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.8 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 560 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 805%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="2026.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">2026</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.8 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 560 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 85%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="928.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">928</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">140*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">1.1 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 728 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value">90%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="503.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">503</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.8 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 580 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="502.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">502</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.8 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 580 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="506.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">506</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.8 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 580 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 80%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="927.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">927</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">140*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">1.1 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 728 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 85%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="918.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">918</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">140*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">1.1 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 750 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 85%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="606.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">606</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">1 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 700 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 85%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="101.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">101</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.8 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 560 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 98%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="929.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">929</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">1.1 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 728 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 100%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="868.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">868</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">1.1 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 770 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 100%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="201.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">201</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.9 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.4 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 600 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 95%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="811.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">811</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.9 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 690 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 95%</span></div>
-                </div>
-            </div>
-            <div class="goods-card">
-                <img src="303.jpg" alt="Curtain" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">303</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">135*260cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.8 kg</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.24 cbm</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price"></span></div>
-                    <div class="info-item"><span class="label">Fabric Weight:</span><span class="value"> 570 gsm</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">60 pcs</span></div>
-                    <div class="info-item"><span class="label">Backout level:</span><span class="value"> 85%</span></div>
-                </div>
+        </div>
+
+        <div class="section-block page-footer">
+            <div class="footer-inner">
+                <span>🪟 Curtain Dept. · Custom sizes · Samples</span>
+                <span><a href="#">Custom Color</a> · <a href="#">Sample Swatch</a></span>
+                <span><a href="mailto:17786916@qq.com">Email Us</a> · +86 18341252519</span>
             </div>
         </div>
     </div>
 
-    <!-- Section 4: Product 1 -->
+    <!-- ============================================================ -->
+    <!-- 页面：Product 1 -->
+    <!-- ============================================================ -->
     <div class="page-wrap" id="product1">
-        <h1>Product 1 Samples</h1>
-        <div class="goods-wrap">
-            <div class="goods-card">
-                <img src="T2.png" alt="Sample Product" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">Sample Bedding Item</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">200*230cm</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">1.2 KG</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.003 CBM</span></div>
-                    <div class="info-item"><span class="label">Sample Price:</span><span class="value price">$ 12.00 /pc</span></div>
-                    <div class="info-item"><span class="label">Sample MOQ:</span><span class="value">1 piece</span></div>
-                    <div class="info-item"><span class="label">Bulk Packing:</span><span class="value">50 pcs per carton</span></div>
+        <div class="section-block page-header">
+            <h1>Product 1 Samples</h1>
+            <p class="page-desc">Sample bedding &amp; fabric · <span>Low MOQ</span> · Quality assurance</p>
+            <nav class="sub-nav" data-page="product1">
+                <a href="#" class="active" data-filter="all">📌 全部</a>
+                <a href="#" data-filter="sample">样品</a>
+                <a href="#" data-filter="bulk">批量</a>
+            </nav>
+        </div>
+
+        <div class="section-block">
+            <div class="goods-wrap">
+                <div class="goods-card" data-type="sample">
+                    <img src="T2.png" alt="Sample" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">Sample Bedding</h3>
+                        <div class="info-item"><span class="label">Size:</span><span class="value">200*230cm</span></div>
+                        <div class="info-item"><span class="label">Price:</span><span class="value price">$12.00</span></div>
+                    </div>
                 </div>
+                <div class="goods-card" data-type="bulk">
+                    <img src="T2.png" alt="Bulk" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">Bulk Order</h3>
+                        <div class="info-item"><span class="label">MOQ:</span><span class="value">50 pcs</span></div>
+                        <div class="info-item"><span class="label">Price:</span><span class="value price">$8.50</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block page-footer">
+            <div class="footer-inner">
+                <span>🧵 Sample Service · Fast shipping</span>
+                <span><a href="#">Request Sample</a> · <a href="#">Bulk Quote</a></span>
+                <span><a href="mailto:17786916@qq.com">Email Us</a> · +86 18341252519</span>
             </div>
         </div>
     </div>
 
-    <!-- Section 5: Product 2 -->
+    <!-- ============================================================ -->
+    <!-- 页面：Product 2 -->
+    <!-- ============================================================ -->
     <div class="page-wrap" id="product2">
-        <h1>Product 2 New Arrival</h1>
-        <div class="goods-wrap">
-            <div class="goods-card">
-                <img src="T1.png" alt="New Product" class="goods-img">
-                <div class="goods-info">
-                    <h3 class="goods-name">New Design Fabric</h3>
-                    <div class="info-item"><span class="label">Size:</span><span class="value">250cm width</span></div>
-                    <div class="info-item"><span class="label">Weight:</span><span class="value">0.42 KG/m</span></div>
-                    <div class="info-item"><span class="label">Volume:</span><span class="value">0.0035 CBM</span></div>
-                    <div class="info-item"><span class="label">Unit Price:</span><span class="value price">$ 0.78 /m</span></div>
-                    <div class="info-item"><span class="label">MOQ:</span><span class="value">300 meters</span></div>
-                    <div class="info-item"><span class="label">Packing:</span><span class="value">100m per roll</span></div>
+        <div class="section-block page-header">
+            <h1>Product 2 New Arrival</h1>
+            <p class="page-desc">Latest design · <span>250cm width</span> · Modern &amp; trendy</p>
+            <nav class="sub-nav" data-page="product2">
+                <a href="#" class="active" data-filter="all">📌 全部</a>
+                <a href="#" data-filter="new">新款</a>
+                <a href="#" data-filter="hot">热销</a>
+            </nav>
+        </div>
+
+        <div class="section-block">
+            <div class="goods-wrap">
+                <div class="goods-card" data-type="new">
+                    <img src="T1.png" alt="New" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">New Design Fabric</h3>
+                        <div class="info-item"><span class="label">Width:</span><span class="value">250cm</span></div>
+                        <div class="info-item"><span class="label">Price:</span><span class="value price">$0.78/m</span></div>
+                    </div>
                 </div>
+                <div class="goods-card" data-type="hot">
+                    <img src="T1.png" alt="Hot" class="goods-img">
+                    <div class="goods-info">
+                        <h3 class="goods-name">Hot Sale Fabric</h3>
+                        <div class="info-item"><span class="label">Width:</span><span class="value">250cm</span></div>
+                        <div class="info-item"><span class="label">Price:</span><span class="value price">$0.68/m</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block page-footer">
+            <div class="footer-inner">
+                <span>✨ New Arrival · Limited stock</span>
+                <span><a href="#">View All</a> · <a href="#">Pre-order</a></span>
+                <span><a href="mailto:17786916@qq.com">Email Us</a> · +86 18341252519</span>
             </div>
         </div>
     </div>
 
-    <!-- Floating Customer Service Button -->
-    <button class="service-btn" id="openQrcode">Contact Us</button>
-    <!-- WeChat QR Popup -->
+    <!-- ========== 预览弹窗 ========== -->
+    <div class="img-preview" id="previewBox">
+        <span class="close" id="previewClose">&times;</span>
+        <img class="preview-media" id="previewImg" style="display:none;">
+        <video class="preview-media" id="previewVideo" loop playsinline controls muted style="display:none;"></video>
+    </div>
+
+    <!-- ========== 客服按钮 & 二维码 ========== -->
+    <button class="service-btn" id="openQrcode">📱 Contact</button>
     <div class="mask" id="mask">
         <div class="qrcode-box">
             <button class="close-btn" id="closeQrcode">×</button>
-            <h3>Add Our WeChat/whatsapp</h3>
-            <img src="whatsapp.jpg" alt="WeChat QR Code" class="wx-qrcode">
-            <p class="tip-text">Scan QR code for order & inquiry</p>
+            <h3>Add Our WeChat / WhatsApp</h3>
+            <img src="whatsapp.jpg" alt="QR Code" class="wx-qrcode">
+            <p class="tip-text">Scan for orders &amp; inquiries</p>
         </div>
     </div>
-    
 
     <script>
-       //封面按钮
-let splashBox = document.getElementById('splashBox');
-let enterBtn = document.getElementById('enterBtn');
-enterBtn.onclick = function () {
-    splashBox.classList.add('hide');
-}
+        // ========== 封面 ==========
+        let splashBox = document.getElementById('splashBox');
+        let enterBtn = document.getElementById('enterBtn');
+        enterBtn.onclick = function() {
+            splashBox.classList.add('hide');
+        };
 
-//导航切换页面
-function switchPage(id) {
-    let allPage = document.querySelectorAll('.page-wrap');
-    allPage.forEach(item => {
-        item.classList.remove('active');
-    })
-    document.getElementById(id).classList.add('active');
-}
+        // ========== 主导航切换 ==========
+        let topNavLinks = document.querySelectorAll('.top-nav a');
+        let allPages = document.querySelectorAll('.page-wrap');
 
-let navList = document.querySelectorAll('.top-nav a');
-navList.forEach(item => {
-    item.addEventListener('click', function (e) {
-        e.preventDefault();
-        let pageId = this.getAttribute('data-page');
-        switchPage(pageId);
-    })
-})
+        function switchPage(pageId) {
+            // 隐藏所有页面
+            allPages.forEach(p => p.classList.remove('active'));
+            // 显示目标
+            let target = document.getElementById(pageId);
+            if (target) target.classList.add('active');
+            // 更新主导航高亮
+            topNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) link.classList.add('active');
+            });
+            // 重置该页面的二级导航到“全部”
+            let activePage = document.getElementById(pageId);
+            if (activePage) {
+                let subNav = activePage.querySelector('.sub-nav');
+                if (subNav) {
+                    let allLink = subNav.querySelector('a[data-filter="all"]');
+                    if (allLink) {
+                        subNav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                        allLink.classList.add('active');
+                        // 显示全部商品
+                        let wrap = activePage.querySelector('.goods-wrap');
+                        if (wrap) {
+                            wrap.querySelectorAll('.goods-card').forEach(card => card.style.display = '');
+                        }
+                    }
+                }
+            }
+        }
 
-// ========= 混合图片+视频点击预览核心逻辑 =========
+        topNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                let pageId = this.dataset.page;
+                if (pageId) switchPage(pageId);
+            });
+        });
+
+        // ========== 二级导航筛选 ==========
+        document.querySelectorAll('.sub-nav').forEach(nav => {
+            nav.addEventListener('click', function(e) {
+                let target = e.target.closest('a');
+                if (!target) return;
+                e.preventDefault();
+
+                let filter = target.dataset.filter;
+                if (!filter) return;
+
+                // 获取当前页面的商品容器
+                let wrap = this.closest('.page-wrap').querySelector('.goods-wrap');
+                if (!wrap) return;
+                let cards = wrap.querySelectorAll('.goods-card');
+
+                // 更新激活样式
+                this.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                target.classList.add('active');
+
+                // 筛选
+                if (filter === 'all') {
+                    cards.forEach(c => c.style.display = '');
+                } else {
+                    cards.forEach(c => {
+                        let type = c.dataset.type || '';
+                        c.style.display = (type === filter) ? '' : 'none';
+                    });
+                }
+            });
+        });
+
+        // ========== 图片/视频预览 ==========
         const previewBox = document.getElementById('previewBox');
         const previewImg = document.getElementById('previewImg');
         const previewVideo = document.getElementById('previewVideo');
 
-        // 遍历所有图片/视频
         document.querySelectorAll('.goods-img').forEach(media => {
-            media.onclick = function () {
-                // 先隐藏两个预览元素，停止视频
+            media.onclick = function() {
                 previewImg.style.display = 'none';
                 previewVideo.style.display = 'none';
                 previewVideo.pause();
 
                 if (this.tagName === 'IMG') {
-                    // 点击图片
                     previewImg.src = this.src;
                     previewImg.style.display = 'block';
                 } else if (this.tagName === 'VIDEO') {
-                    // 点击视频
                     previewVideo.src = this.src;
                     previewVideo.style.display = 'block';
                     previewVideo.play();
                 }
                 previewBox.style.display = 'flex';
-            }
-        })
+            };
+        });
 
-        // 关闭预览
         function closePreview() {
             previewBox.style.display = 'none';
             previewVideo.pause();
         }
         document.getElementById('previewClose').onclick = closePreview;
-        previewBox.onclick = function (e) {
+        previewBox.onclick = function(e) {
             if (e.target === previewBox) closePreview();
-        }
+        };
 
-//二维码弹窗
-let mask = document.getElementById('mask');
-document.getElementById('openQrcode').onclick = function () {
-    mask.style.display = 'flex';
-}
-document.getElementById('closeQrcode').onclick = function () {
-    mask.style.display = 'none';
-}
-mask.onclick = function (e) {
-    if (e.target === mask) {
-        mask.style.display = 'none';
-    }
-}
+        // ========== 二维码弹窗 ==========
+        let mask = document.getElementById('mask');
+        document.getElementById('openQrcode').onclick = function() {
+            mask.style.display = 'flex';
+        };
+        document.getElementById('closeQrcode').onclick = function() {
+            mask.style.display = 'none';
+        };
+        mask.onclick = function(e) {
+            if (e.target === mask) mask.style.display = 'none';
+        };
+
+        // ========== 键盘快捷键 1~5 ==========
+        document.addEventListener('keydown', function(e) {
+            const map = { '1': 'fabric', '2': 'bedding', '3': 'curtain', '4': 'product1', '5': 'product2' };
+            const pageId = map[e.key];
+            if (pageId) {
+                e.preventDefault();
+                switchPage(pageId);
+            }
+        });
     </script>
+
 </body>
 </html>
